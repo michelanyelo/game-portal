@@ -1,11 +1,11 @@
 <x-layout>
     <div class="container mx-auto px-4">
-        <div class="game-details border-b border-gray-800 pb-12 flex">
+        <div class="game-details border-b border-gray-800 pb-12 flex flex-col lg:flex-row ">
             <div class="flex-none">
                 <img src="https://upload.wikimedia.org/wikipedia/en/c/ce/FFVIIRemake.png" alt="cover">
             </div>
-            <div class="ml-12 mr-64">
-                <h2 class="font-semibold text-4xl">Final Fantasy VII Remake</h2>
+            <div class="lg:ml-12 lg:mr-64 ">
+                <h2 class="font-semibold text-4xl leading-tight mt-1 ">Final Fantasy VII Remake</h2>
                 <div class="text-gray-400">
                     <span>Adventure, RPG</span>
                     &middot;
@@ -14,7 +14,7 @@
                     <span>Playstation 4</span>
                 </div>
 
-                <div class="flex flex-wrap items-center mt-8 space-x-12">
+                <div class="flex flex-wrap items-center mt-8">
                     <div class="flex items-center">
                         <div class="w-16 h-16 bg-gray-800 rounded-full">
                             <div class="font-semibold text-xs flex justify-center items-center h-full">
@@ -26,7 +26,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center">
+                    <div class="flex items-center ml-12">
                         <div class="w-16 h-16 bg-gray-800 rounded-full">
                             <div class="font-semibold text-xs flex justify-center items-center h-full">
                                 92%
@@ -37,7 +37,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-4 lg:ml-12 mt-4 lg:mt-0">
                         <x-social-icon>
                             <svg class="w-5 h-5 fill-current" viewBox="0 0 16 17" fill="none">
                                 <path
@@ -97,7 +97,7 @@
 
         <div class="images-container border-b border-gray-800 pb-12 mt-8">
             <x-heading-title>Galería</x-heading-title>
-            <div class="grid grid-cols-3 gap-12 mt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mt-8">
                 <div>
                     <a href="#">
                         <img src="https://upload.wikimedia.org/wikipedia/en/c/ce/FFVIIRemake.png" alt="screenshot"

@@ -23,9 +23,9 @@
                     <img src="/primary-logo.svg" alt="laracasts video game store" class="w-32 flex-none">
                 </a>
                 <ul class="flex ml-0 lg:ml-16 space-x-8 mt-6 lg:mt-0">
-                    <li><a href="#" class="hover:text-gray-400">Games</a></li>
-                    <li><a href="#" class="hover:text-gray-400">Reviews</a></li>
-                    <li><a href="#" class="hover:text-gray-400">Cooming soon</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Juegos</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Reseñas</a></li>
+                    <li><a href="#" class="hover:text-gray-400">Próximos lanzamientos</a></li>
                 </ul>
             </div>
 
