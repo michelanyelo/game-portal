@@ -15,7 +15,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900 text-white flex-col">
     <header class="border-b border-gray-800">
         <nav class="container mx-auto flex  flex-col lg:flex-row items-center justify-between px-4 py-6">
             <div class="flex flex-col lg:flex-row items-center">
@@ -53,7 +53,7 @@
         </nav>
     </header>
 
-    <main class="py-8">
+    <main class="py-8 flex-1 min-h-screen">
         {{ $slot }}
     </main>
 
