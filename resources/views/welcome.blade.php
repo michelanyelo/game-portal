@@ -13,12 +13,10 @@
             <div class="recently-reviewed w-full lg:w-3/4 mr-0 lg:mr-32">
                 <x-heading-title>Últimos reseñados</x-heading-title>
                 <div class="recently-reviewed-container space-y-12 mt-8">
-                    <x-card-game-h/>
-                    <x-card-game-h/>
-                    <x-card-game-h/>
-                    <x-card-game-h/>
-                    <x-card-game-h/>
-                    <x-card-game-h/>
+                    @foreach($recentlyReviewed as $rr)
+                        <x-card-game-h :name="$rr['name']" :cover="\Illuminate\Support\Str::replaceFirst('thumb', 'cover_big',$rr['cover']['url'])" :platforms="$rr['platforms']" :rating="$rr['rating']" :summary="$rr['summary']"/>
+                    @endforeach
+
                 </div>
             </div>
 

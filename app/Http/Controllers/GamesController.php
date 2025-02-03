@@ -11,12 +11,14 @@ class GamesController extends Controller
 
     public function index()
     {
+        $current = Carbon::now()->timestamp;
+
         $popularGames = Cache::remember('popular-games', 1, function () {
             return Http::withHeaders([
                 'Client-ID' => env('IGDB_CLIENT_ID'),
                 'Authorization' => 'Bearer ' . env('IGDB_ACCESS_TOKEN')
             ])->withBody(
-                "fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating, slug;
+                "fields name, cover.url, first_release_date, total_rating_count, platforms.abbreviation, rating;
             where platforms = (48,49,130,6)
             & rating > 90
             & total_rating_count > 1000
@@ -28,8 +30,26 @@ class GamesController extends Controller
             )->post('https://api.igdb.com/v4/games')->json();
         });
 
+        $recentlyReviewed = Cache::remember('recently-games', 1, function () use ($current) {
+            return Http::withHeaders([
+                'Client-ID' => env('IGDB_CLIENT_ID'),
+                'Authorization' => 'Bearer ' . env('IGDB_ACCESS_TOKEN')
+            ])->withBody(
+                "fields name, cover.url, first_release_date, platforms.abbreviation, rating, total_rating_count, summary;
+            where platforms = (48,49,130,6)
+            & first_release_date < {$current}
+            & rating_count > 1000
+            & cover != null
+            & first_release_date != null;
+            sort first_release_date desc;
+            limit 3;",
+                "text/plain"
+            )->post('https://api.igdb.com/v4/games')->json();
+        });
+
         return view('welcome', [
-            'popularGames' => $popularGames
+            'popularGames' => $popularGames,
+            'recentlyReviewed' => $recentlyReviewed
         ]);
     }
 }
