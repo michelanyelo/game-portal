@@ -4,12 +4,9 @@
 
         <div
             class="popular-games text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-6 gap-12 border-b border-gray-800 pb-16">
-            <x-card-game-v/>
-            <x-card-game-v/>
-            <x-card-game-v/>
-            <x-card-game-v/>
-            <x-card-game-v/>
-            <x-card-game-v/>
+            @foreach($popularGames as $game)
+                <x-card-game-v :name="$game['name']" :cover="\Illuminate\Support\Str::replaceFirst('thumb', 'cover_big',$game['cover']['url'])" :platforms="$game['platforms']" :rating="$game['rating']"/>
+            @endforeach
         </div>
 
         <div class="flex flex-col lg:flex-row my-10">

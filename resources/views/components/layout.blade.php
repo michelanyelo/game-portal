@@ -20,7 +20,7 @@
         <nav class="container mx-auto flex  flex-col lg:flex-row items-center justify-between px-4 py-6">
             <div class="flex flex-col lg:flex-row items-center">
                 <a href="/">
-                    <img src="/primary-logo.svg" alt="laracasts video game store" class="w-32 flex-none">
+                    <img src="/build-a-video-game-aggregrator.png" alt="laracasts video game store" class="w-32 flex-none">
                 </a>
                 <ul class="flex ml-0 lg:ml-16 space-x-8 mt-6 lg:mt-0">
                     <li><a href="#" class="hover:text-gray-400">Juegos</a></li>
