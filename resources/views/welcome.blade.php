@@ -23,12 +23,9 @@
             <div class="most-anticipated lg:w-1/4 mt-12 lg:mt-0">
                 <x-heading-title>Más esperados</x-heading-title>
                 <div class="most-anticipated-container space-y-10 mt-8">
-                    <x-most-anticipated/>
-                    <x-most-anticipated/>
-                    <x-most-anticipated/>
-                    <x-most-anticipated/>
-                    <x-most-anticipated/>
-                    <x-most-anticipated/>
+                    @foreach($mostAnticipated as $ma)
+                        <x-most-anticipated :name="$ma['name']" :date="$ma['first_release_date']"/>
+                    @endforeach
                 </div>
             </div>
         </div>

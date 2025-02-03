@@ -12,6 +12,7 @@ class GamesController extends Controller
     public function index()
     {
         $current = Carbon::now()->timestamp;
+        $afterFourMoths = Carbon::now()->addMonths(8)->timestamp;
 
         $popularGames = Cache::remember('popular-games', 1, function () {
             return Http::withHeaders([
@@ -47,9 +48,23 @@ class GamesController extends Controller
             )->post('https://api.igdb.com/v4/games')->json();
         });
 
+        $mostAnticipated = Cache::remember('anticipated-games', 1, function () use ($afterFourMoths, $current) {
+            return Http::withHeaders([
+                'Client-ID' => env('IGDB_CLIENT_ID'),
+                'Authorization' => 'Bearer ' . env('IGDB_ACCESS_TOKEN')
+            ])->withBody(
+                "fields name, first_release_date;
+            where first_release_date >= $current & first_release_date <= $afterFourMoths;
+            sort first_release_date desc;
+            limit 12;",
+                "text/plain"
+            )->post('https://api.igdb.com/v4/games')->json();
+        });
+
         return view('welcome', [
             'popularGames' => $popularGames,
-            'recentlyReviewed' => $recentlyReviewed
+            'recentlyReviewed' => $recentlyReviewed,
+            'mostAnticipated' => $mostAnticipated
         ]);
     }
 }
